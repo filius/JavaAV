@@ -79,7 +79,7 @@ public enum CodecFlag {
 	INTERLACED_ME       (avcodec.CODEC_FLAG_INTERLACED_ME),
 
 	/** */
-	CLOSED_GOP          (avcodec.CODEC_FLAG_CLOSED_GOP),
+	CLOSED_GOP          ((int)avcodec.CODEC_FLAG_CLOSED_GOP),
 
 	/** Allow non spec compliant speedup tricks. */
 	FAST                (avcodec.CODEC_FLAG2_FAST),

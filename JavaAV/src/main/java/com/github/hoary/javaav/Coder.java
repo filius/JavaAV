@@ -33,19 +33,9 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import static org.bytedeco.javacpp.avcodec.avcodec_alloc_context3;
-import static org.bytedeco.javacpp.avcodec.avcodec_alloc_frame;
 import static org.bytedeco.javacpp.avcodec.avcodec_close;
 import static org.bytedeco.javacpp.avcodec.avcodec_flush_buffers;
-import static org.bytedeco.javacpp.avcodec.avcodec_free_frame;
-import static org.bytedeco.javacpp.avutil.FF_QP2LAMBDA;
-import static org.bytedeco.javacpp.avutil.av_d2q;
-import static org.bytedeco.javacpp.avutil.av_dict_free;
-import static org.bytedeco.javacpp.avutil.av_dict_set;
-import static org.bytedeco.javacpp.avutil.av_free;
-import static org.bytedeco.javacpp.avutil.av_get_bytes_per_sample;
-import static org.bytedeco.javacpp.avutil.av_get_default_channel_layout;
-import static org.bytedeco.javacpp.avutil.av_inv_q;
-import static org.bytedeco.javacpp.avutil.av_q2d;
+import static org.bytedeco.javacpp.avutil.*;
 
 /**
  * {@code Coder} is an abstract representation of an encoder or decoder. This class
@@ -176,7 +166,7 @@ public abstract class Coder extends Configurable {
 
 		av_dict_free(avDictionary);
 
-		avFrame = avcodec_alloc_frame();
+		avFrame = av_frame_alloc();
 
 		if (avFrame == null)
 			throw new JavaAVException("Could not allocate frame.");
@@ -191,7 +181,7 @@ public abstract class Coder extends Configurable {
 	 */
 	public void close() {
 		if (avFrame != null) {
-			avcodec_free_frame(avFrame);
+			av_frame_free(avFrame);
 			avFrame = null;
 		}
 
@@ -278,7 +268,7 @@ public abstract class Coder extends Configurable {
 	}
 
 	@Override
-	public int getBitrate() {
+	public long getBitrate() {
 		if (avContext != null)
 			return avContext.bit_rate();
 

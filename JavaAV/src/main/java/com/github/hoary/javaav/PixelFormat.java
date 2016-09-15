@@ -135,12 +135,12 @@ public enum PixelFormat {
 	GBRP16BE(avutil.AV_PIX_FMT_GBRP16BE), ///< planar GBR 4:4:4 48bpp, big-endian
 	GBRP16LE(avutil.AV_PIX_FMT_GBRP16LE), ///< planar GBR 4:4:4 48bpp, little-endian
 
-	/**
-	 * duplicated pixel formats for compatibility with libav. FFmpeg supports these formats since May 8 2012 and Jan 28
-	 * 2012 (commits f9ca1ac7 and 143a5c55) Libav added them Oct 12 2012 with incompatible values (commit 6d5600e85)
-	 */
-	YUVA422P_LIBAV(avutil.AV_PIX_FMT_YUVA422P_LIBAV), ///< planar YUV 4:2:2 24bpp, (1 Cr & Cb sample per 2x1 Y & A samples)
-	YUVA444P_LIBAV(avutil.AV_PIX_FMT_YUVA444P_LIBAV), ///< planar YUV 4:4:4 32bpp, (1 Cr & Cb sample per 1x1 Y & A samples)
+//	/**
+//	 * duplicated pixel formats for compatibility with libav. FFmpeg supports these formats since May 8 2012 and Jan 28
+//	 * 2012 (commits f9ca1ac7 and 143a5c55) Libav added them Oct 12 2012 with incompatible values (commit 6d5600e85)
+//	 */
+//	YUVA422P_LIBAV(avutil.AV_PIX_FMT_YUVA422P_LIBAV), ///< planar YUV 4:2:2 24bpp, (1 Cr & Cb sample per 2x1 Y & A samples)
+//	YUVA444P_LIBAV(avutil.AV_PIX_FMT_YUVA444P_LIBAV), ///< planar YUV 4:4:4 32bpp, (1 Cr & Cb sample per 1x1 Y & A samples)
 
 	YUVA420P9BE(avutil.AV_PIX_FMT_YUVA420P9BE),  ///< planar YUV 4:2:0 22.5bpp, (1 Cr & Cb sample per 2x2 Y & A samples), big-endian
 	YUVA420P9LE(avutil.AV_PIX_FMT_YUVA420P9LE),  ///< planar YUV 4:2:0 22.5bpp, (1 Cr & Cb sample per 2x2 Y & A samples), little-endian

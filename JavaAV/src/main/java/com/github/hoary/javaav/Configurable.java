@@ -60,7 +60,7 @@ public abstract class Configurable {
 	protected int sampleRate;
 
 	/** The bitrate for audio and video encoder. */
-	protected int bitrate;
+	protected long bitrate;
 
 	/** The profile for audio and video encoder. */
 	protected int profile;
@@ -203,7 +203,7 @@ public abstract class Configurable {
 	 *
 	 * @return bitrate.
 	 */
-	public int getBitrate() {
+	public long getBitrate() {
 		return bitrate;
 	}
 
@@ -285,7 +285,7 @@ public abstract class Configurable {
 	 * @param profile new profile.
 	 */
 	public void setProfile(int profile) {
-		this.profile = bitrate;
+		this.profile = profile;
 	}
 
 	/**

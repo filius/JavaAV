@@ -45,20 +45,10 @@ import static org.bytedeco.javacpp.avcodec.av_copy_packet;
 import static org.bytedeco.javacpp.avcodec.av_init_packet;
 import static org.bytedeco.javacpp.avcodec.avcodec_encode_audio2;
 import static org.bytedeco.javacpp.avcodec.avcodec_encode_video2;
-import static org.bytedeco.javacpp.avcodec.avcodec_get_frame_defaults;
 import static org.bytedeco.javacpp.avcodec.avpicture_alloc;
 import static org.bytedeco.javacpp.avcodec.avpicture_fill;
 import static org.bytedeco.javacpp.avcodec.avpicture_get_size;
-import static org.bytedeco.javacpp.avutil.AVFrame;
-import static org.bytedeco.javacpp.avutil.AVRational;
-import static org.bytedeco.javacpp.avutil.AV_NOPTS_VALUE;
-import static org.bytedeco.javacpp.avutil.av_d2q;
-import static org.bytedeco.javacpp.avutil.av_find_nearest_q_idx;
-import static org.bytedeco.javacpp.avutil.av_free;
-import static org.bytedeco.javacpp.avutil.av_get_channel_layout_nb_channels;
-import static org.bytedeco.javacpp.avutil.av_get_default_channel_layout;
-import static org.bytedeco.javacpp.avutil.av_malloc;
-import static org.bytedeco.javacpp.avutil.av_q2d;
+import static org.bytedeco.javacpp.avutil.*;
 
 public class Encoder extends Coder {
 
@@ -270,11 +260,11 @@ public class Encoder extends Coder {
 		}
 
 		for (AudioFrame frame : frames) {
-			avcodec_get_frame_defaults(avFrame);
+			av_frame_unref(avFrame);
 
 			for (int i = 0; i < frame.getPlaneCount(); i++) {
 				avFrame.data(i, frame.getPlane(i).position(0));
-				avFrame.linesize(i, frame.getPlane(i).limit());
+				avFrame.linesize(i, (int)frame.getPlane(i).limit());
 			}
 
 			avFrame.nb_samples(frame.getSampleCount());

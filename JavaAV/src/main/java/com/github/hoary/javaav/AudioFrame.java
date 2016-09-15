@@ -99,7 +99,7 @@ public class AudioFrame extends MediaFrame {
 	 *
 	 * @return buffer size per plane.
 	 */
-	public int getBufferSize() {
+	public long getBufferSize() {
 		return planePointers[0].capacity();
 	}
 

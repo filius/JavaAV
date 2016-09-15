@@ -34,10 +34,10 @@ import static org.bytedeco.javacpp.avcodec.av_copy_packet;
 import static org.bytedeco.javacpp.avcodec.av_free_packet;
 import static org.bytedeco.javacpp.avcodec.avcodec_decode_audio4;
 import static org.bytedeco.javacpp.avcodec.avcodec_decode_video2;
-import static org.bytedeco.javacpp.avcodec.avcodec_get_frame_defaults;
 import static org.bytedeco.javacpp.avcodec.avpicture_alloc;
 import static org.bytedeco.javacpp.avcodec.avpicture_free;
 import static org.bytedeco.javacpp.avutil.av_frame_get_best_effort_timestamp;
+import static org.bytedeco.javacpp.avutil.av_frame_unref;
 import static org.bytedeco.javacpp.avutil.av_sample_fmt_is_planar;
 import static org.bytedeco.javacpp.avutil.av_samples_get_buffer_size;
 
@@ -194,7 +194,7 @@ public class Decoder extends Coder {
 
 		while (avPacket.size() > 0) {
 			// reset frame values
-			avcodec_get_frame_defaults(avFrame);
+			av_frame_unref(avFrame);
 
 			int len = avcodec_decode_audio4(avContext, avFrame, gotFrame, avPacket);
 
@@ -277,7 +277,7 @@ public class Decoder extends Coder {
 		}
 
 		// reset frame parameters
-		avcodec_get_frame_defaults(avFrame);
+		av_frame_unref(avFrame);
 
 		int len = avcodec_decode_video2(avContext, avFrame, gotFrame, avPacket);
 

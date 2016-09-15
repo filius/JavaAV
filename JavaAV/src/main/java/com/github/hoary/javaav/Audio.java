@@ -117,7 +117,7 @@ public class Audio {
 		SampleFormat format = frame.getAudioFormat().getSampleFormat();
 		int depth = getFormatDepth(format);
 
-		int length = planes[0].limit() / depth;
+		int length = (int)planes[0].limit() / depth;
 		int channels = planes.length;
 		byte[] samples = new byte[channels * length];
 
@@ -151,7 +151,7 @@ public class Audio {
 		SampleFormat format = frame.getAudioFormat().getSampleFormat();
 		int depth = getFormatDepth(format);
 
-		int length = planes[0].limit() / depth;
+		int length = (int)planes[0].limit() / depth;
 		int channels = planes.length;
 		byte[] samples = new byte[channels * length * 2];
 
@@ -186,7 +186,7 @@ public class Audio {
 		SampleFormat format = frame.getAudioFormat().getSampleFormat();
 		int depth = getFormatDepth(format);
 
-		int length = planes[0].limit() / depth;
+		int length = (int)planes[0].limit() / depth;
 		int channels = planes.length;
 		byte[] samples = new byte[channels * length * 3];
 
@@ -222,7 +222,7 @@ public class Audio {
 		SampleFormat format = frame.getAudioFormat().getSampleFormat();
 		int depth = getFormatDepth(format);
 
-		int length = planes[0].limit() / depth;
+		int length = (int)planes[0].limit() / depth;
 		int channels = planes.length;
 		byte[] samples = new byte[channels * length * 4];
 
