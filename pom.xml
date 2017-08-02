@@ -36,14 +36,14 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <version.slf4j>1.7.21</version.slf4j>
-        <version.javacv>1.2</version.javacv>
+        <version.javacv>1.3.3</version.javacv>
         <version.junit>4.12</version.junit>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.bytedeco</groupId>
-            <artifactId>javacv</artifactId>
+            <artifactId>javacv-platform</artifactId>
             <version>${version.javacv}</version>
         </dependency>
         <dependency>
